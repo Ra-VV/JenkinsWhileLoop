@@ -2,17 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build_Stage') {
+            when {
+                expression {
+                    BRANCH_NAME == 'prod'
+                }
+            }
             steps {
                 echo 'Building..'
             }
         }
-        stage('Test') {
+        stage('Test_Stage') {
             steps {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage('Deploy_Stage') {
             steps {
                 echo 'Deploying....'
             }
